@@ -24,7 +24,11 @@ public final class InventoryLedger {
         Key key = keyOf(sku, warehouse);
         Snapshot incoming = new Snapshot(quantity, version);
 
-        // Exercise starting point: version handling here needs to be repaired.
+        Snapshot current = snapshots.get(key);
+        if (current != null && version <= current.version()) {
+            return false;
+        }
+
         snapshots.put(key, incoming);
         return true;
     }
