@@ -1,0 +1,21 @@
+请阅读当前 dsh-superagent-prototype 仓库的 SETUP.md，并按其流程帮助我配置一次学习 Demo。
+
+以下 3 项请先由我替换成真实值：
+- GitHub 仓库：YOUR_LOGIN/oms-harness-demo
+- 独立 Agent GitHub 用户：AGENT_LOGIN
+- 该测试仓库的本机绝对路径：ABSOLUTE_DEMO_REPOSITORY_PATH
+
+本次选择：
+1. GitHub only。
+2. allowed list 只放上述仓库拥有者的个人 GitHub login。
+3. accept mode=observe，使用明确 @Agent 的请求测试接单。
+4. 先使用 1 个 Worker。
+5. 独立 superagent profile；如果已经存在配置，应保留并检查，不重建覆盖。
+6. 使用原型当前部署文档列出的兼容 DSH 版本，核对 package.json；不使用 --force 跳过兼容检查。
+7. 每任务使用独立 worktree。Execution prepare 可调用本机 Demo 仓库 scripts/prepare-worktree.sh 的绝对路径。
+8. 提交作者使用 Agent 身份。Delivery requirements 删除自动合并内容，并要求 PR + 测试证据、人工评审和合并。
+9. 本次先完成 Issue → Ticket → Worker → PR → 评论跟进；独立定时巡检作为下一轮实验，不创建周期任务。
+
+先检查依赖、模型是否可用、GitHub 账号和现有配置。Agent 的 gh 登录必须与我的个人登录分开。
+需要我在本机登录、接受邀请或填写密钥时，说明具体操作；不要要求我把密钥贴到聊天里。
+安装完成后，用 scripts/dsh-superagent status 确认返回 0，并说明面板位置和如何从新 Issue 触发。
